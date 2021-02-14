@@ -1,0 +1,14 @@
+
+$forcolor:white;
+
+.color{
+    text-align: left;
+    width: 310px;
+    color: $forcolor;
+}
+.containor{
+    padding: 20px;
+    button{
+        color: $forcolor;
+    }
+}
