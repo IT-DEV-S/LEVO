@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MoreInfo from "./MoreInfo";
-
-import "../CSS/Card.css";
-
-//import {Container, Col, Row } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
-
-//import Data from ./src/data.json;
 import info from "../Data/data.json";
 
 const Card = () => {
   const [btnTxt, setBtnTxt] = useState("READ MORE");
   const [display, setDisplay] = useState("none");
+  const [pressKey, setPressKey] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      setPressKey(false);
+    };
+  });
 
   const showHide = () => {
+    setPressKey(true);
     if (btnTxt === "LESS") {
       setDisplay("none");
       setBtnTxt("READ MORE");
@@ -50,9 +52,8 @@ const Card = () => {
               >
                 <MoreInfo
                   info={info}
-                  btnTxt={btnTxt}
+                  pressKey={pressKey}
                   key={index.toString()}
-                  id={index.toString()}
                   className="apearance"
                 />
               </div>
@@ -66,9 +67,8 @@ const Card = () => {
                 >
                   <MoreInfo
                     info={info}
-                    btnTxt={btnTxt}
+                    pressKey={pressKey}
                     key={index.toString()}
-                    id={index.toString()}
                     className="apearance"
                   />
                 </div>
